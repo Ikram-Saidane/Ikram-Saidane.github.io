@@ -11,6 +11,8 @@
 <meta property="og:url" content="https://ikram-saidane.github.io/">
 <meta property="og:image" content="https://ikram-saidane.github.io/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="fr" href="https://ikram-saidane.github.io/">
+<link rel="alternate" hreflang="en" href="https://ikram-saidane.github.io/en.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M33 4c-2 10-8 20-17 30M33 4c3 12 7 22 13 30' fill='none' stroke='%232f7d4a' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='44' r='14' fill='%23d2042d'/%3E%3Ccircle cx='46' cy='44' r='14' fill='%23d2042d'/%3E%3C/svg%3E">
 <title>Ikram Saidane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,6 +62,11 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .navlinks { display: flex; gap: 18px; font-weight: 600; font-size: 15px; }
 .navlinks a { text-decoration: none; opacity: .85; }
 .navlinks a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+.lang { display: inline-flex; border: 1.5px solid var(--on-cherry); border-radius: 999px; overflow: hidden; font: 700 12.5px var(--mono); }
+.lang span, .lang a { padding: 4px 10px; text-decoration: none; }
+.lang span { background: var(--on-cherry); color: var(--cherry-deep); }
+.lang a:hover { background: rgba(255,255,255,.18); }
 
 /* Hero */
 .hero { background: var(--cherry); color: var(--on-cherry); position: relative; overflow: hidden; }
@@ -365,7 +372,10 @@ img { max-width: 100%; }
 <nav>
   <div class="wrap">
     <a class="logo" href="#top"><svg><use href="#cherry"/></svg>ikram.ai</a>
-    <div class="navlinks"><a href="#projets">Projets</a><a href="#cours">Cours</a><a href="#parcours">Parcours</a><a href="#engagement">Engagement</a><a href="#contact">Contact</a></div>
+    <div class="nav-right">
+      <div class="navlinks"><a href="#projets">Projets</a><a href="#cours">Cours</a><a href="#parcours">Parcours</a><a href="#engagement">Engagement</a><a href="#contact">Contact</a></div>
+      <span class="lang" aria-label="Language"><span>FR</span><a href="en.html" hreflang="en" lang="en">EN</a></span>
+    </div>
   </div>
 </nav>
 
