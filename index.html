@@ -191,6 +191,19 @@ section { padding-block: 72px 8px; scroll-margin-top: 60px; }
 .extra a { border: 2px dashed var(--line); border-radius: 12px; padding: 6px 12px; font-size: 14.5px; text-decoration: none; }
 .extra a:hover { border-color: var(--cherry); color: var(--cherry); border-style: solid; }
 
+/* course list v2 */
+.col-sub { color: var(--muted); font-weight: 600; letter-spacing: .04em; text-transform: none; }
+.m2c.star { grid-column: span 3; }
+.m2c.more { background: var(--blush); border-style: dashed; grid-column: 1 / -1; grid-template-columns: auto 1fr; align-items: center; column-gap: 20px; }
+.m2c.more .row { grid-column: 1; gap: 10px; justify-content: flex-start; }
+.m2c.more h3 { grid-column: 1; }
+.m2c.more .tags { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 900px) { .m2c.star { grid-column: span 1; } .m2c.more { grid-template-columns: 1fr; } .m2c.more .tags { grid-column: 1; grid-row: auto; } }
+.m2c.more .tags li { background: var(--surface); font-size: 11.5px; }
+.course .pill.pj { display: inline-block; margin-bottom: 6px; font: 600 11px var(--mono); padding: 2px 8px; border-radius: 999px; background: var(--cherry); color: var(--on-cherry); border: 0; }
+.m1-also { margin: 18px 0 0; color: var(--muted); font-size: 15px; max-width: 80ch; }
+.m1-also b { color: var(--ink); }
+
 /* Courses */
 .courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .course { border: 2px solid var(--ink); border-radius: 20px; padding: 20px; background: var(--surface); display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; min-width: 0; transition: transform .2s ease, background .2s ease; }
@@ -513,63 +526,59 @@ img { max-width: 100%; }
   <section id="cours">
     <div class="sec-head">
       <h2>Ce que j'<em>apprends</em></h2>
-      <p>Une sélection de mes cours à Paris Dauphine. Ceux marqués « Projet » sont validés par un projet réalisé de A à Z.</p>
+      <p>Mes cours à Paris Dauphine, du M1 au M2. Les cours marqués <b>Projet</b> sont validés par un projet réalisé de A à Z.</p>
     </div>
 
-    <p class="col-t">Cette année · M2 IA</p>
+    <p class="col-t">Cette année · M2 <span class="col-sub">· 10 cours validés par projet</span></p>
     <div class="m2">
-      <div class="m2c star">
-        <div class="row"><span class="pill">Projet</span><span class="kw">S4</span></div>
-        <h3>IA Générative</h3>
-        <p>LLM, RAG et agents : le cœur de ce que je veux faire en stage.</p>
-      </div>
+      <div class="m2c star"><div class="row"><span class="pill">Projet</span><span class="kw">S4</span></div><h3>IA Générative</h3><p>Projet de data science en IA générative : LLM, RAG et agents, le cœur de ce que je veux faire en stage.</p></div>
       <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S3</span></div><h3>Traitement automatique des langues</h3><p>NLP, du texte brut aux modèles de langue.</p></div>
       <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S3</span></div><h3>Deep Learning</h3><p>Architectures profondes et entraînement.</p></div>
       <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S4</span></div><h3>Deep Learning pour l'image</h3><p>Réseaux convolutifs et analyse d'images.</p></div>
-      <div class="m2c"><div class="row"><span class="pill ghost">Cours</span><span class="kw">S3</span></div><h3>Apprentissage par renforcement</h3><p>Agents qui apprennent par essai et récompense.</p></div>
-      <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S3</span></div><h3>Fouille de graphes</h3><p>Graph mining, communautés, centralités.</p></div>
-      <div class="m2c"><div class="row"><span class="pill ghost">Cours</span><span class="kw">S4</span></div><h3>Graphes de connaissance</h3><p>Logiques de description et raisonnement sur les données.</p></div>
-      <div class="m2c"><div class="row"><span class="pill ghost">Cours</span><span class="kw">S3 · S4</span></div><h3>Big Data</h3><p>Systèmes et langages Big Data, ML à grande échelle.</p></div>
+      <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S3</span></div><h3>Apprentissage par renforcement</h3><p>Des agents qui apprennent par essai et récompense.</p></div>
+      <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S3</span></div><h3>Fouille de graphes</h3><p>Graph mining : communautés, centralités.</p></div>
+      <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S3</span></div><h3>Visualisation de données</h3><p>Raconter les données avec des graphiques clairs.</p></div>
       <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S4</span></div><h3>IA sur le Cloud</h3><p>Entraîner et servir des modèles dans le cloud.</p></div>
       <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S4</span></div><h3>Flux de données</h3><p>Apprendre sur des données qui arrivent en continu.</p></div>
-      <div class="m2c"><div class="row"><span class="pill ghost">Cours</span><span class="kw">S3</span></div><h3>Éthique &amp; data science</h3><p>Le cadre qui va avec Agora et l'AI Act.</p></div>
+      <div class="m2c"><div class="row"><span class="pill">Projet</span><span class="kw">S4</span></div><h3>Recherche Monte-Carlo &amp; jeux</h3><p>MCTS : explorer un arbre de décisions par simulation.</p></div>
+      <div class="m2c more"><div class="row"><span class="pill ghost">Examen</span><span class="kw">S3 · S4</span></div><h3>+ 8 cours sur examen</h3><ul class="tags"><li>Fondamentaux du ML</li><li>Optimisation pour l'apprentissage</li><li>Bases de données NoSQL</li><li>Big Data : systèmes &amp; langages</li><li>ML sur Big Data</li><li>Graphes de connaissance</li><li>Qualité des données</li><li>Éthique &amp; data science</li></ul></div>
     </div>
 
-    <p class="col-t" style="margin-top:40px">Les bases · année dernière</p>
+    <p class="col-t" style="margin-top:40px">Les bases · M1 <span class="col-sub">· 2025 – 2026</span></p>
     <div class="courses">
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><circle class="pt" cx="18" cy="44" r="3"/><circle class="pt" cx="24" cy="36" r="3"/><circle class="pt" cx="30" cy="38" r="3"/><circle class="pt" cx="34" cy="28" r="3"/><circle class="pt" cx="42" cy="24" r="3"/><circle class="pt" cx="46" cy="16" r="3"/><path class="ln" d="M10 52 54 10"/><path class="ax" d="M22 18 42 42" stroke-dasharray="4 4"/></svg>
-        <div><h3>Analyse de données</h3><ul class="tags"><li>ACP</li><li>ACM</li><li>Classification</li></ul></div>
+        <div><h3>Analyse des données</h3><ul class="tags"><li>ACP</li><li>ACM</li><li>Classification</li></ul></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M8 8v48h48"/><path class="ln" d="M12 50C28 50 30 14 56 14"/><circle class="pt" cx="16" cy="46" r="3"/><circle class="pt" cx="26" cy="42" r="3"/><circle class="pt" cx="34" cy="26" r="3"/><circle class="pt" cx="46" cy="18" r="3"/></svg>
-        <div><h3>Modèles linéaires</h3><ul class="tags"><li>Régression linéaire</li><li>Régression logistique</li></ul></div>
+        <div><h3>Modèle linéaire</h3><ul class="tags"><li>Régression linéaire</li><li>Régression logistique</li></ul></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><rect class="soft" x="8" y="8" width="23" height="23" rx="4"/><rect class="soft" x="33" y="33" width="23" height="23" rx="4"/><rect x="33" y="8" width="23" height="23" rx="4" fill="var(--cherry)"/><rect x="8" y="33" width="23" height="23" rx="4" fill="var(--cherry)"/></svg>
-        <div><h3>Apprentissage statistique</h3><ul class="tags"><li>Classification supervisée</li><li>Validation croisée</li></ul><a class="link" href="#cancer">↳ projet cancer du sein</a></div>
+        <div><span class="pill pj">Projet</span><h3>Apprentissage statistique I &amp; II</h3><ul class="tags"><li>Classification supervisée</li><li>Validation croisée</li></ul><a class="link" href="#cancer">↳ projet cancer du sein</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M32 14 16 34M32 14 48 34M16 34 8 52M16 34 24 52M48 34 40 52M48 34 56 52"/><circle class="hot" cx="32" cy="12" r="6"/><circle class="pt" cx="16" cy="34" r="5"/><circle class="pt" cx="48" cy="34" r="5"/><circle class="soft" cx="8" cy="54" r="4"/><circle class="soft" cx="24" cy="54" r="4"/><circle class="soft" cx="40" cy="54" r="4"/><circle class="soft" cx="56" cy="54" r="4"/></svg>
-        <div><h3>Machine Learning</h3><ul class="tags"><li>Fondamentaux du ML</li><li>Modèles supervisés</li><li>Ensembles</li></ul></div>
+        <div><span class="pill pj">Projet</span><h3>Projet Machine Learning</h3><ul class="tags"><li>Projet ML de bout en bout</li><li>Fouille de données</li></ul></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M6 14C18 62 46 62 58 14"/><circle class="pt" cx="12" cy="30" r="3"/><circle class="pt" cx="20" cy="44" r="3"/><circle class="pt" cx="27" cy="51" r="3"/><circle class="hot" cx="32" cy="52" r="5"/><path class="ln" d="M12 30 20 44 27 51" stroke-dasharray="2 4"/></svg>
-        <div><h3>Optimisation</h3><ul class="tags"><li>Descente de gradient</li><li>Réseaux de neurones</li><li>Réseaux bayésiens</li></ul><a class="link" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">↳ projet réseau bayésien</a></div>
+        <div><h3>Optimisation numérique</h3><ul class="tags"><li>Descente de gradient</li><li>Réseaux de neurones</li><li>Réseaux bayésiens</li></ul><a class="link" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">↳ projet réseau bayésien</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M6 56h52"/><path class="ln" d="M6 40l7-10 6 8 7-16 6 10 6-6 6 12"/><path class="ln" d="M44 38l6-10 8 4" stroke-dasharray="3 4"/></svg>
-        <div><h3>Séries temporelles</h3><ul class="tags"><li>LSTM</li><li>MLP</li><li>Prévision</li></ul></div>
+        <div><h3>Séries temporelles avec R</h3><ul class="tags"><li>LSTM</li><li>MLP</li><li>Prévision</li></ul></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M10 32 30 12M30 12 54 20M10 32 28 52M28 52 54 44M30 12 28 52"/><path class="ln" d="M10 32 30 12 54 20 54 44"/><circle class="hot" cx="10" cy="32" r="5"/><circle class="pt" cx="30" cy="12" r="5"/><circle class="pt" cx="54" cy="20" r="5"/><circle class="pt" cx="28" cy="52" r="5"/><circle class="hot" cx="54" cy="44" r="5"/></svg>
-        <div><h3>Graphes</h3><ul class="tags"><li>DAG</li><li>Dijkstra</li><li>Plus courts chemins</li></ul></div>
+        <div><span class="pill pj">Projet</span><h3>Complexité &amp; théorie des graphes</h3><ul class="tags"><li>DAG</li><li>Dijkstra</li><li>Plus courts chemins</li></ul></div>
       </div>
       <div class="course mc">
         <canvas id="mc" width="336" height="336" aria-label="Simulation de Monte Carlo pour estimer pi"></canvas>
         <div>
-          <h3>Méthodes de Monte Carlo</h3>
-          <ul class="tags" style="margin-bottom:10px"><li>Simulation</li><li>Recherche Monte-Carlo &amp; jeux (M2)</li></ul>
+          <h3>Méthodes de Monte Carlo &amp; application</h3>
+          <ul class="tags" style="margin-bottom:10px"><li>Simulation</li><li>Projet</li></ul>
           <p style="margin:0;opacity:.85">On lance des points au hasard dans un carré. La part qui tombe dans le quart de cercle, multipliée par 4, approche π.</p>
           <div class="mc-out" id="mcOut">π ≈ …</div>
           <span style="font:600 12.5px var(--mono);opacity:.75" id="mcN">0 points</span><br>
@@ -577,6 +586,7 @@ img { max-width: 100%; }
         </div>
       </div>
     </div>
+    <p class="m1-also"><b>Aussi en M1 :</b> Python pour la data science (projet), Programmation objet (projet), Algorithmique avancée, Intelligence artificielle, Décision dans l'incertain, SGBD, Logique.</p>
   </section>
 
   <section id="parcours">
@@ -722,10 +732,10 @@ img { max-width: 100%; }
       a: "<b>58e sur 5 235 équipes</b> sur Kaggle (Ames Housing), avec du feature engineering et un stacking XGBoost, LightGBM et CatBoost.",
       src: [['Projets','#projets']] },
     { id: 'cours', k: ['cours','etudes','etudie','appris','master','m1','m2','dauphine','formation','universite','licence','istic','diplome','matiere','matieres','programme'],
-      a: "M2 IA à <b>Paris Dauphine</b>. Cette année : <b>IA générative</b>, NLP, deep learning (dont l'image), apprentissage par renforcement, fouille de graphes, graphes de connaissance, Big Data, IA sur le cloud et flux de données. L'an dernier, les bases : ACP/ACM, modèles linéaires, apprentissage statistique, optimisation, séries temporelles, graphes et Monte Carlo.",
+      a: "Master à <b>Paris Dauphine</b>. En M2, 10 cours sont validés par <b>projet</b> : IA générative, NLP, deep learning (dont l'image), apprentissage par renforcement, fouille de graphes, visualisation, IA sur le cloud, flux de données et recherche Monte-Carlo. En M1 : analyse des données, modèle linéaire, apprentissage statistique (projet cancer du sein), projet machine learning, optimisation, séries temporelles avec R, théorie des graphes et Monte Carlo.",
       src: [['Cours','#cours'],['Formation','#parcours']] },
-    { id: 'm2', k: ['nlp','langues naturelles','traitement automatique','renforcement','reinforcement','big data','spark','cloud','image','images','vision','cnn','graph mining','fouille','connaissance','ontologie','flux','streaming','ethique','ia generative','generative','mcts','jeux'],
-      a: "Ses cours de M2 les plus proches du métier : <b>IA générative</b>, <b>NLP</b>, deep learning et deep learning pour l'image, apprentissage par renforcement, fouille de graphes, graphes de connaissance, Big Data, <b>IA sur le cloud</b>, flux de données et recherche Monte-Carlo pour les jeux. La plupart sont validés par un <b>projet</b>.",
+    { id: 'm2', k: ['nlp','langues naturelles','traitement automatique','renforcement','reinforcement','big data','spark','cloud','image','images','vision','cnn','graph mining','fouille','connaissance','ontologie','flux','streaming','ethique','ia generative','generative','mcts','jeux','visualisation','visu','nosql','qualite'],
+      a: "En M2, ses cours <b>validés par projet</b> : IA générative, NLP, deep learning, deep learning pour l'image, apprentissage par renforcement, fouille de graphes, visualisation de données, <b>IA sur le cloud</b>, flux de données et recherche Monte-Carlo pour les jeux. S'y ajoutent sur examen : fondamentaux du ML, bases NoSQL, Big Data, ML sur Big Data, graphes de connaissance, qualité des données et éthique.",
       src: [['Cours M2','#cours']] },
     { id: 'acp', k: ['acp','acm','analyse de donnees','composantes','correspondances','clustering','classification'],
       a: "En <b>analyse de données</b>, elle a pratiqué l'ACP, l'ACM et la classification (supervisée et non supervisée).",
