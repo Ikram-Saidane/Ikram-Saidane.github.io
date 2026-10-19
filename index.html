@@ -204,6 +204,30 @@ section { padding-block: 72px 8px; scroll-margin-top: 60px; }
 .m1-also { margin: 18px 0 0; color: var(--muted); font-size: 15px; max-width: 80ch; }
 .m1-also b { color: var(--ink); }
 
+/* course projects */
+.sub-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 46px 0 18px; }
+.sub-head h3 { font: 800 clamp(26px, 3.6vw, 36px) var(--display); letter-spacing: -.02em; }
+.sub-head h3 em { font-style: normal; color: var(--cherry); }
+.sub-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+.cp { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.cpc { background: var(--surface); border: 2px solid var(--ink); border-radius: 18px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; scroll-margin-top: 80px; transition: transform .2s ease, box-shadow .2s ease; }
+.cpc:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--cherry); }
+.cpc:target { box-shadow: 5px 5px 0 var(--cherry); }
+.cpc.wide { grid-column: span 2; background: var(--blush); }
+.cpc .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cpc .pill { font-size: 11px; }
+.cpc h3 { font: 800 19px/1.15 var(--display); }
+.cpc.wide h3 { font-size: 24px; }
+.cpc .n { font: 800 26px/1 var(--display); color: var(--cherry); letter-spacing: -.01em; overflow-wrap: anywhere; }
+.cpc.wide .n { font-size: 38px; }
+.cpc .n small { display: block; font: 500 13px var(--body); color: var(--muted); letter-spacing: 0; margin-top: 5px; }
+.cpc p { margin: 0; font-size: 14.5px; }
+.cpc .tags li { font-size: 11.5px; }
+.cpc.wide .tags li { background: var(--surface); }
+.m1-also a { color: var(--cherry); }
+@media (max-width: 1000px) { .cp { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .cp { grid-template-columns: 1fr; } .cpc.wide { grid-column: span 1; } }
+
 /* Courses */
 .courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .course { border: 2px solid var(--ink); border-radius: 20px; padding: 20px; background: var(--surface); display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; min-width: 0; transition: transform .2s ease, background .2s ease; }
@@ -520,7 +544,20 @@ img { max-width: 100%; }
         <ul class="tags"><li>XGBoost</li><li>LightGBM</li><li>CatBoost</li><li>Stacking</li></ul>
       </article>
     </div>
-    <div class="extra"><b>Et aussi</b><span>Annulations hôtelières · AUC 0.915 · SHAP/LIME</span><a href="https://github.com/Ikram-Saidane/tunisia-tourism-forecasting" target="_blank" rel="noopener">Flux touristique Tunisie · 24 gouvernorats · RF, MLP, LSTM ↗</a><a href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">Réseau bayésien ↗</a><a href="https://github.com/Ikram-Saidane?tab=repositories" target="_blank" rel="noopener">Tous mes dépôts GitHub ↗</a></div>
+    <div class="sub-head" id="cours-projets">
+      <h3>Projets de cours <em>· M1</em></h3>
+      <p>Chaque cours de M1 s'est terminé par un vrai projet. Voici les principaux.</p>
+    </div>
+    <div class="cp">
+      <article class="cpc wide" id="p-tourism"><div class="row"><span class="pill">Séries temporelles</span><a class="code" href="https://github.com/Ikram-Saidane/tunisia-tourism-forecasting" target="_blank" rel="noopener">Code ↗</a></div><h3>Prévision du flux touristique en Tunisie</h3><div class="n">R² 0.961<small>LSTM, horizon 3 mois · 24 gouvernorats, 2017–2025</small></div><p>Une progression contrôlée : Random Forest (R² 0.76), puis ACP (0.78), MLP tuné (0.79), et enfin un LSTM sur des fenêtres de 12 mois qui bat la référence Random Forest (0.91). Les prévisions sont cartographiées avec GeoPandas.</p><ul class="tags"><li>Random Forest</li><li>ACP</li><li>MLP</li><li>LSTM</li><li>GeoPandas</li></ul></article>
+      <article class="cpc" id="p-resto"><div class="row"><span class="pill">Fouille de données</span></div><h3>Revenu des restaurants</h3><div class="n">AUC 0.948<small>classification binaire + SMOTE · 980 restaurants</small></div><p>Un workflow complet : imputation selon l'asymétrie, régression (Ridge, R² 0.75 en test), classification, K-means (k = 8 par silhouette), puis SHAP et LIME.</p><ul class="tags"><li>Ridge</li><li>K-means</li><li>SMOTE</li><li>SHAP / LIME</li></ul></article>
+      <article class="cpc" id="p-hotel"><div class="row"><span class="pill">Fouille de données</span></div><h3>Annulations hôtelières</h3><div class="n">AUC 0.915<small>prédiction des annulations · SMOTE</small></div><p>Prédire quelles réservations seront annulées, avec un rééquilibrage SMOTE et des explications SHAP / LIME lisibles par le métier.</p><ul class="tags"><li>Classification</li><li>SMOTE</li><li>SHAP / LIME</li></ul></article>
+      <article class="cpc" id="p-ecom"><div class="row"><span class="pill">Analyse des données</span></div><h3>E-commerce en Tunisie</h3><div class="n">3 profils<small>d'acheteurs en ligne · 97 répondants</small></div><p>Enquête sur la confiance et la satisfaction des acheteurs. ACP (2 axes, ~70 % de l'inertie), ACM, puis classification hiérarchique. En binôme.</p><ul class="tags"><li>R</li><li>FactoMineR</li><li>ACP</li><li>ACM</li><li>CAH</li></ul></article>
+      <article class="cpc" id="p-seam"><div class="row"><span class="pill">Théorie des graphes</span></div><h3>Seam Carving</h3><div class="n">O(H×W)<small>plus court chemin par tri topologique</small></div><p>Réduire une image sans déformer ses objets : l'image devient un DAG et la couture de moindre énergie un plus court chemin. Comparé à Dijkstra et Bellman-Ford.</p><ul class="tags"><li>Python</li><li>NumPy</li><li>DAG</li><li>Dijkstra</li></ul></article>
+      <article class="cpc" id="p-crime"><div class="row"><span class="pill">Optimisation</span><a class="code" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">Code ↗</a></div><h3>Enquête criminelle bayésienne</h3><div class="n">P(A | B)<small>inférence bayésienne sur les indices</small></div><p>Modéliser une enquête avec un réseau bayésien : relier suspects, indices et témoignages, puis raisonner par inférence pour désigner le coupable le plus probable.</p><ul class="tags"><li>Réseau bayésien</li><li>Inférence</li></ul></article>
+      <article class="cpc" id="p-basket"><div class="row"><span class="pill">Python pour la data science</span></div><h3>Qui gagne le match ?</h3><div class="n">W / L<small>prédiction du vainqueur</small></div><p>Prédire l'équipe gagnante d'un match de basketball à partir des données de matchs.</p><ul class="tags"><li>Python</li><li>Classification</li></ul></article>
+    </div>
+    <div class="extra"><a href="https://github.com/Ikram-Saidane?tab=repositories" target="_blank" rel="noopener">Tous mes dépôts GitHub ↗</a></div>
   </section>
 
   <section id="cours">
@@ -548,7 +585,7 @@ img { max-width: 100%; }
     <div class="courses">
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><circle class="pt" cx="18" cy="44" r="3"/><circle class="pt" cx="24" cy="36" r="3"/><circle class="pt" cx="30" cy="38" r="3"/><circle class="pt" cx="34" cy="28" r="3"/><circle class="pt" cx="42" cy="24" r="3"/><circle class="pt" cx="46" cy="16" r="3"/><path class="ln" d="M10 52 54 10"/><path class="ax" d="M22 18 42 42" stroke-dasharray="4 4"/></svg>
-        <div><h3>Analyse des données</h3><ul class="tags"><li>ACP</li><li>ACM</li><li>Classification</li></ul></div>
+        <div><h3>Analyse des données</h3><ul class="tags"><li>ACP</li><li>ACM</li><li>Classification</li></ul><a class="link" href="#p-ecom">↳ projet e-commerce</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M8 8v48h48"/><path class="ln" d="M12 50C28 50 30 14 56 14"/><circle class="pt" cx="16" cy="46" r="3"/><circle class="pt" cx="26" cy="42" r="3"/><circle class="pt" cx="34" cy="26" r="3"/><circle class="pt" cx="46" cy="18" r="3"/></svg>
@@ -560,19 +597,19 @@ img { max-width: 100%; }
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M32 14 16 34M32 14 48 34M16 34 8 52M16 34 24 52M48 34 40 52M48 34 56 52"/><circle class="hot" cx="32" cy="12" r="6"/><circle class="pt" cx="16" cy="34" r="5"/><circle class="pt" cx="48" cy="34" r="5"/><circle class="soft" cx="8" cy="54" r="4"/><circle class="soft" cx="24" cy="54" r="4"/><circle class="soft" cx="40" cy="54" r="4"/><circle class="soft" cx="56" cy="54" r="4"/></svg>
-        <div><span class="pill pj">Projet</span><h3>Projet Machine Learning</h3><ul class="tags"><li>Projet ML de bout en bout</li><li>Fouille de données</li></ul></div>
+        <div><span class="pill pj">Projet</span><h3>Projet Machine Learning</h3><ul class="tags"><li>Projet ML de bout en bout</li><li>Fouille de données</li></ul><a class="link" href="#p-resto">↳ restaurants &amp; hôtels</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M6 14C18 62 46 62 58 14"/><circle class="pt" cx="12" cy="30" r="3"/><circle class="pt" cx="20" cy="44" r="3"/><circle class="pt" cx="27" cy="51" r="3"/><circle class="hot" cx="32" cy="52" r="5"/><path class="ln" d="M12 30 20 44 27 51" stroke-dasharray="2 4"/></svg>
-        <div><h3>Optimisation numérique</h3><ul class="tags"><li>Descente de gradient</li><li>Réseaux de neurones</li><li>Réseaux bayésiens</li></ul><a class="link" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">↳ projet réseau bayésien</a></div>
+        <div><h3>Optimisation numérique</h3><ul class="tags"><li>Descente de gradient</li><li>Réseaux de neurones</li><li>Réseaux bayésiens</li></ul><a class="link" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">↳ enquête criminelle bayésienne</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M6 56h52"/><path class="ln" d="M6 40l7-10 6 8 7-16 6 10 6-6 6 12"/><path class="ln" d="M44 38l6-10 8 4" stroke-dasharray="3 4"/></svg>
-        <div><h3>Séries temporelles avec R</h3><ul class="tags"><li>LSTM</li><li>MLP</li><li>Prévision</li></ul></div>
+        <div><h3>Séries temporelles avec R</h3><ul class="tags"><li>LSTM</li><li>MLP</li><li>Prévision</li></ul><a class="link" href="#p-tourism">↳ flux touristique</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M10 32 30 12M30 12 54 20M10 32 28 52M28 52 54 44M30 12 28 52"/><path class="ln" d="M10 32 30 12 54 20 54 44"/><circle class="hot" cx="10" cy="32" r="5"/><circle class="pt" cx="30" cy="12" r="5"/><circle class="pt" cx="54" cy="20" r="5"/><circle class="pt" cx="28" cy="52" r="5"/><circle class="hot" cx="54" cy="44" r="5"/></svg>
-        <div><span class="pill pj">Projet</span><h3>Complexité &amp; théorie des graphes</h3><ul class="tags"><li>DAG</li><li>Dijkstra</li><li>Plus courts chemins</li></ul></div>
+        <div><span class="pill pj">Projet</span><h3>Complexité &amp; théorie des graphes</h3><ul class="tags"><li>DAG</li><li>Dijkstra</li><li>Plus courts chemins</li></ul><a class="link" href="#p-seam">↳ projet seam carving</a></div>
       </div>
       <div class="course mc">
         <canvas id="mc" width="336" height="336" aria-label="Simulation de Monte Carlo pour estimer pi"></canvas>
@@ -586,7 +623,7 @@ img { max-width: 100%; }
         </div>
       </div>
     </div>
-    <p class="m1-also"><b>Aussi en M1 :</b> Python pour la data science (projet), Programmation objet (projet), Algorithmique avancée, Intelligence artificielle, Décision dans l'incertain, SGBD, Logique.</p>
+    <p class="m1-also"><b>Aussi en M1 :</b> Python pour la data science (projet : <a href="#p-basket">vainqueur d'un match de basket</a>), Programmation objet (projet), Algorithmique avancée, Intelligence artificielle, Décision dans l'incertain, SGBD, Logique.</p>
   </section>
 
   <section id="parcours">
@@ -734,7 +771,7 @@ img { max-width: 100%; }
     { id: 'cours', k: ['cours','etudes','etudie','appris','master','m1','m2','dauphine','formation','universite','licence','istic','diplome','matiere','matieres','programme'],
       a: "Master à <b>Paris Dauphine</b>. En M2, 10 cours sont validés par <b>projet</b> : IA générative, NLP, deep learning (dont l'image), apprentissage par renforcement, fouille de graphes, visualisation, IA sur le cloud, flux de données et recherche Monte-Carlo. En M1 : analyse des données, modèle linéaire, apprentissage statistique (projet cancer du sein), projet machine learning, optimisation, séries temporelles avec R, théorie des graphes et Monte Carlo.",
       src: [['Cours','#cours'],['Formation','#parcours']] },
-    { id: 'm2', k: ['nlp','langues naturelles','traitement automatique','renforcement','reinforcement','big data','spark','cloud','image','images','vision','cnn','graph mining','fouille','connaissance','ontologie','flux','streaming','ethique','ia generative','generative','mcts','jeux','visualisation','visu','nosql','qualite'],
+    { id: 'm2', k: ['nlp','langues naturelles','traitement automatique','renforcement','reinforcement','big data','spark','cloud','image','images','vision par ordinateur','computer vision','cnn','graph mining','fouille','connaissance','ontologie','flux','streaming','ethique','ia generative','generative','mcts','jeux','visualisation','visu','nosql','qualite'],
       a: "En M2, ses cours <b>validés par projet</b> : IA générative, NLP, deep learning, deep learning pour l'image, apprentissage par renforcement, fouille de graphes, visualisation de données, <b>IA sur le cloud</b>, flux de données et recherche Monte-Carlo pour les jeux. S'y ajoutent sur examen : fondamentaux du ML, bases NoSQL, Big Data, ML sur Big Data, graphes de connaissance, qualité des données et éthique.",
       src: [['Cours M2','#cours']] },
     { id: 'acp', k: ['acp','acm','analyse de donnees','composantes','correspondances','clustering','classification'],
@@ -776,6 +813,27 @@ img { max-width: 100%; }
     { id: 'gh', k: ['github','code','depot','depots','repo','repos','source','sources'],
       a: "Son code est sur <b>github.com/Ikram-Saidane</b> : Agora, churn-prediction-api, house-prices-kaggle, tunisia-tourism-forecasting et un projet de réseau bayésien.",
       src: [['Projets','#projets']] },
+    { id: 'tourism', k: ['prevision touristique','flux touristique','tourisme','touristique','tourism','flux','gouvernorat','gouvernorats','geopandas','carte'],
+      a: "Prévision du <b>flux touristique</b> dans 24 gouvernorats tunisiens (2017–2025). Elle est partie d'un Random Forest (R² 0.76), puis ACP, MLP tuné, et enfin un <b>LSTM</b> sur 12 mois : <b>R² 0.961</b>. Résultats cartographiés avec GeoPandas.",
+      src: [['Flux touristique','#p-tourism']] },
+    { id: 'resto', k: ['restaurant','restaurants','revenu','revenue','fouille','data mining','smote','shap','lime'],
+      a: "Projet de <b>fouille de données</b> sur 980 restaurants : régression (Ridge, R² 0.75), K-means (k = 8), classification binaire avec SMOTE (<b>AUC 0.948</b>) et explications SHAP / LIME. Elle a aussi prédit les <b>annulations hôtelières</b> (AUC 0.915).",
+      src: [['Restaurants','#p-resto'],['Hôtels','#p-hotel']] },
+    { id: 'hotel', k: ['hotel','hotels','hotelieres','annulation','annulations','reservation','reservations'],
+      a: "Prédiction des <b>annulations hôtelières</b> : <b>AUC 0.915</b>, avec SMOTE pour rééquilibrer les classes et SHAP / LIME pour expliquer les prédictions.",
+      src: [['Hôtels','#p-hotel']] },
+    { id: 'ecom', k: ['ecommerce','e-commerce','commerce','enquete','questionnaire','acheteurs','factominer'],
+      a: "Projet d'<b>analyse des données</b> en binôme : une enquête auprès de 97 acheteurs en ligne en Tunisie. ACP (2 axes, ~70 % de l'inertie), ACM et classification hiérarchique qui fait ressortir <b>3 profils</b> d'acheteurs. Réalisé en R avec FactoMineR.",
+      src: [['E-commerce','#p-ecom']] },
+    { id: 'seam', k: ['seam','carving','image','images','redimensionnement','tri topologique','topologique','bellman'],
+      a: "<b>Seam Carving</b> : réduire une image sans déformer ses objets. L'image devient un <b>DAG</b> et la couture de moindre énergie un plus court chemin, trouvé par tri topologique en O(H×W), plus rapide que Dijkstra ou Bellman-Ford.",
+      src: [['Seam Carving','#p-seam']] },
+    { id: 'crime', k: ['crime','criminelle','enquete criminelle','suspect','suspects','coupable','indices'],
+      a: "Une <b>enquête criminelle</b> modélisée par un <b>réseau bayésien</b> : suspects, indices et témoignages sont reliés, puis l'inférence désigne le coupable le plus probable.",
+      src: [['Enquête bayésienne','#p-crime']] },
+    { id: 'basket', k: ['basket','basketball','match','matchs','nba','sport','vainqueur','gagne'],
+      a: "Dans le cours de <b>Python pour la data science</b>, elle a construit un modèle qui prédit le <b>vainqueur d'un match de basketball</b> à partir des données de matchs.",
+      src: [['Basketball','#p-basket']] },
     { id: 'thanks', k: ['merci','super','top','genial','cool','parfait','thanks'],
       a: "Avec plaisir ! Pour aller plus loin, le mieux est d'écrire à Ikram : ikram.saidane@dauphine.eu 🍒",
       src: [['Contact','#contact']] }

@@ -204,6 +204,30 @@ section { padding-block: 72px 8px; scroll-margin-top: 60px; }
 .m1-also { margin: 18px 0 0; color: var(--muted); font-size: 15px; max-width: 80ch; }
 .m1-also b { color: var(--ink); }
 
+/* course projects */
+.sub-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 46px 0 18px; }
+.sub-head h3 { font: 800 clamp(26px, 3.6vw, 36px) var(--display); letter-spacing: -.02em; }
+.sub-head h3 em { font-style: normal; color: var(--cherry); }
+.sub-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+.cp { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.cpc { background: var(--surface); border: 2px solid var(--ink); border-radius: 18px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; scroll-margin-top: 80px; transition: transform .2s ease, box-shadow .2s ease; }
+.cpc:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--cherry); }
+.cpc:target { box-shadow: 5px 5px 0 var(--cherry); }
+.cpc.wide { grid-column: span 2; background: var(--blush); }
+.cpc .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cpc .pill { font-size: 11px; }
+.cpc h3 { font: 800 19px/1.15 var(--display); }
+.cpc.wide h3 { font-size: 24px; }
+.cpc .n { font: 800 26px/1 var(--display); color: var(--cherry); letter-spacing: -.01em; overflow-wrap: anywhere; }
+.cpc.wide .n { font-size: 38px; }
+.cpc .n small { display: block; font: 500 13px var(--body); color: var(--muted); letter-spacing: 0; margin-top: 5px; }
+.cpc p { margin: 0; font-size: 14.5px; }
+.cpc .tags li { font-size: 11.5px; }
+.cpc.wide .tags li { background: var(--surface); }
+.m1-also a { color: var(--cherry); }
+@media (max-width: 1000px) { .cp { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .cp { grid-template-columns: 1fr; } .cpc.wide { grid-column: span 1; } }
+
 /* Courses */
 .courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .course { border: 2px solid var(--ink); border-radius: 20px; padding: 20px; background: var(--surface); display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; min-width: 0; transition: transform .2s ease, background .2s ease; }
@@ -520,7 +544,20 @@ img { max-width: 100%; }
         <ul class="tags"><li>XGBoost</li><li>LightGBM</li><li>CatBoost</li><li>Stacking</li></ul>
       </article>
     </div>
-    <div class="extra"><b>Also</b><span>Hotel cancellations · AUC 0.915 · SHAP/LIME</span><a href="https://github.com/Ikram-Saidane/tunisia-tourism-forecasting" target="_blank" rel="noopener">Tunisia tourism forecasting · 24 governorates · RF, MLP, LSTM ↗</a><a href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">Bayesian network ↗</a><a href="https://github.com/Ikram-Saidane?tab=repositories" target="_blank" rel="noopener">All my GitHub repos ↗</a></div>
+    <div class="sub-head" id="cours-projets">
+      <h3>Course projects <em>· year 1</em></h3>
+      <p>Every first-year course ended with a real project. Here are the main ones.</p>
+    </div>
+    <div class="cp">
+      <article class="cpc wide" id="p-tourism"><div class="row"><span class="pill">Time series</span><a class="code" href="https://github.com/Ikram-Saidane/tunisia-tourism-forecasting" target="_blank" rel="noopener">Code ↗</a></div><h3>Tourism flow forecasting in Tunisia</h3><div class="n">R² 0.961<small>LSTM, 3-month horizon · 24 governorates, 2017–2025</small></div><p>A controlled progression: Random Forest (R² 0.76), then PCA (0.78), a tuned MLP (0.79), and finally an LSTM on 12-month windows that beats the Random Forest baseline (0.91). Forecasts are mapped with GeoPandas.</p><ul class="tags"><li>Random Forest</li><li>PCA</li><li>MLP</li><li>LSTM</li><li>GeoPandas</li></ul></article>
+      <article class="cpc" id="p-resto"><div class="row"><span class="pill">Data mining</span></div><h3>Restaurant revenue</h3><div class="n">AUC 0.948<small>binary classification + SMOTE · 980 restaurants</small></div><p>A full workflow: skewness-aware imputation, regression (Ridge, test R² 0.75), classification, K-means (k = 8 by silhouette), then SHAP and LIME.</p><ul class="tags"><li>Ridge</li><li>K-means</li><li>SMOTE</li><li>SHAP / LIME</li></ul></article>
+      <article class="cpc" id="p-hotel"><div class="row"><span class="pill">Data mining</span></div><h3>Hotel cancellations</h3><div class="n">AUC 0.915<small>cancellation prediction · SMOTE</small></div><p>Predicting which bookings will be cancelled, with SMOTE rebalancing and SHAP / LIME explanations the business can read.</p><ul class="tags"><li>Classification</li><li>SMOTE</li><li>SHAP / LIME</li></ul></article>
+      <article class="cpc" id="p-ecom"><div class="row"><span class="pill">Data analysis</span></div><h3>E-commerce in Tunisia</h3><div class="n">3 profiles<small>of online shoppers · 97 respondents</small></div><p>A survey on online shoppers' trust and satisfaction. PCA (2 axes, ~70% of inertia), MCA, then hierarchical clustering. Pair project.</p><ul class="tags"><li>R</li><li>FactoMineR</li><li>PCA</li><li>MCA</li><li>HCA</li></ul></article>
+      <article class="cpc" id="p-seam"><div class="row"><span class="pill">Graph theory</span></div><h3>Seam Carving</h3><div class="n">O(H×W)<small>shortest path by topological sort</small></div><p>Shrinking an image without distorting its objects: the image becomes a DAG and the lowest-energy seam a shortest path. Benchmarked against Dijkstra and Bellman-Ford.</p><ul class="tags"><li>Python</li><li>NumPy</li><li>DAG</li><li>Dijkstra</li></ul></article>
+      <article class="cpc" id="p-crime"><div class="row"><span class="pill">Optimisation</span><a class="code" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">Code ↗</a></div><h3>Bayesian crime investigation</h3><div class="n">P(A | B)<small>Bayesian inference over the clues</small></div><p>Modelling an investigation with a Bayesian network: linking suspects, clues and testimonies, then reasoning by inference to find the most likely culprit.</p><ul class="tags"><li>Bayesian network</li><li>Inference</li></ul></article>
+      <article class="cpc" id="p-basket"><div class="row"><span class="pill">Python for data science</span></div><h3>Who wins the game?</h3><div class="n">W / L<small>winner prediction</small></div><p>Predicting the winning team of a basketball game from match data.</p><ul class="tags"><li>Python</li><li>Classification</li></ul></article>
+    </div>
+    <div class="extra"><a href="https://github.com/Ikram-Saidane?tab=repositories" target="_blank" rel="noopener">All my GitHub repos ↗</a></div>
   </section>
 
   <section id="cours">
@@ -548,7 +585,7 @@ img { max-width: 100%; }
     <div class="courses">
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><circle class="pt" cx="18" cy="44" r="3"/><circle class="pt" cx="24" cy="36" r="3"/><circle class="pt" cx="30" cy="38" r="3"/><circle class="pt" cx="34" cy="28" r="3"/><circle class="pt" cx="42" cy="24" r="3"/><circle class="pt" cx="46" cy="16" r="3"/><path class="ln" d="M10 52 54 10"/><path class="ax" d="M22 18 42 42" stroke-dasharray="4 4"/></svg>
-        <div><h3>Data analysis</h3><ul class="tags"><li>PCA</li><li>MCA</li><li>Classification</li></ul></div>
+        <div><h3>Data analysis</h3><ul class="tags"><li>PCA</li><li>MCA</li><li>Classification</li></ul><a class="link" href="#p-ecom">↳ e-commerce project</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M8 8v48h48"/><path class="ln" d="M12 50C28 50 30 14 56 14"/><circle class="pt" cx="16" cy="46" r="3"/><circle class="pt" cx="26" cy="42" r="3"/><circle class="pt" cx="34" cy="26" r="3"/><circle class="pt" cx="46" cy="18" r="3"/></svg>
@@ -560,19 +597,19 @@ img { max-width: 100%; }
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M32 14 16 34M32 14 48 34M16 34 8 52M16 34 24 52M48 34 40 52M48 34 56 52"/><circle class="hot" cx="32" cy="12" r="6"/><circle class="pt" cx="16" cy="34" r="5"/><circle class="pt" cx="48" cy="34" r="5"/><circle class="soft" cx="8" cy="54" r="4"/><circle class="soft" cx="24" cy="54" r="4"/><circle class="soft" cx="40" cy="54" r="4"/><circle class="soft" cx="56" cy="54" r="4"/></svg>
-        <div><span class="pill pj">Project</span><h3>Machine Learning project</h3><ul class="tags"><li>End-to-end ML project</li><li>Data mining</li></ul></div>
+        <div><span class="pill pj">Project</span><h3>Machine Learning project</h3><ul class="tags"><li>End-to-end ML project</li><li>Data mining</li></ul><a class="link" href="#p-resto">↳ restaurants &amp; hotels</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M6 14C18 62 46 62 58 14"/><circle class="pt" cx="12" cy="30" r="3"/><circle class="pt" cx="20" cy="44" r="3"/><circle class="pt" cx="27" cy="51" r="3"/><circle class="hot" cx="32" cy="52" r="5"/><path class="ln" d="M12 30 20 44 27 51" stroke-dasharray="2 4"/></svg>
-        <div><h3>Numerical optimisation</h3><ul class="tags"><li>Gradient descent</li><li>Neural networks</li><li>Bayesian networks</li></ul><a class="link" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">↳ Bayesian network project</a></div>
+        <div><h3>Numerical optimisation</h3><ul class="tags"><li>Gradient descent</li><li>Neural networks</li><li>Bayesian networks</li></ul><a class="link" href="https://github.com/Ikram-Saidane/R-seau-Bay-sien" target="_blank" rel="noopener">↳ Bayesian crime investigation</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M6 56h52"/><path class="ln" d="M6 40l7-10 6 8 7-16 6 10 6-6 6 12"/><path class="ln" d="M44 38l6-10 8 4" stroke-dasharray="3 4"/></svg>
-        <div><h3>Time series with R</h3><ul class="tags"><li>LSTM</li><li>MLP</li><li>Forecasting</li></ul></div>
+        <div><h3>Time series with R</h3><ul class="tags"><li>LSTM</li><li>MLP</li><li>Forecasting</li></ul><a class="link" href="#p-tourism">↳ tourism forecasting</a></div>
       </div>
       <div class="course">
         <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path class="ax" d="M10 32 30 12M30 12 54 20M10 32 28 52M28 52 54 44M30 12 28 52"/><path class="ln" d="M10 32 30 12 54 20 54 44"/><circle class="hot" cx="10" cy="32" r="5"/><circle class="pt" cx="30" cy="12" r="5"/><circle class="pt" cx="54" cy="20" r="5"/><circle class="pt" cx="28" cy="52" r="5"/><circle class="hot" cx="54" cy="44" r="5"/></svg>
-        <div><span class="pill pj">Project</span><h3>Complexity &amp; graph theory</h3><ul class="tags"><li>DAGs</li><li>Dijkstra</li><li>Shortest paths</li></ul></div>
+        <div><span class="pill pj">Project</span><h3>Complexity &amp; graph theory</h3><ul class="tags"><li>DAGs</li><li>Dijkstra</li><li>Shortest paths</li></ul><a class="link" href="#p-seam">↳ seam carving project</a></div>
       </div>
       <div class="course mc">
         <canvas id="mc" width="336" height="336" aria-label="Monte Carlo simulation estimating pi"></canvas>
@@ -586,7 +623,7 @@ img { max-width: 100%; }
         </div>
       </div>
     </div>
-    <p class="m1-also"><b>Also in year 1:</b> Python for data science (project), Object-oriented programming (project), Advanced algorithms, Artificial intelligence, Decision under uncertainty, Database systems, Logic.</p>
+    <p class="m1-also"><b>Also in year 1:</b> Python for data science (project: <a href="#p-basket">predicting a basketball winner</a>), Object-oriented programming (project), Advanced algorithms, Artificial intelligence, Decision under uncertainty, Database systems, Logic.</p>
   </section>
 
   <section id="parcours">
@@ -734,7 +771,7 @@ img { max-width: 100%; }
     { id: 'cours', k: ['course','courses','study','studies','studying','learned','learning','master','msc','degree','dauphine','education','university','bachelor','bsc','istic','curriculum','subjects'],
       a: "Master's at <b>Paris Dauphine</b>. In year 2, 10 courses are assessed through a <b>project</b>: generative AI, NLP, deep learning (including images), reinforcement learning, graph mining, data visualisation, AI in the cloud, data streams and Monte Carlo search. In year 1: data analysis, linear models, statistical learning (breast cancer project), a machine learning project, optimisation, time series with R, graph theory and Monte Carlo.",
       src: [['Courses','#cours'],['Education','#parcours']] },
-    { id: 'm2', k: ['nlp','natural language','reinforcement','big data','spark','cloud','image','images','vision','cnn','graph mining','mining','knowledge','ontology','stream','streams','streaming','ethics','generative ai','mcts','games','visualisation','visualization','nosql','quality','dataviz'],
+    { id: 'm2', k: ['nlp','natural language','reinforcement','big data','spark','cloud','image','images','computer vision','cnn','graph mining','mining','knowledge','ontology','stream','streams','streaming','ethics','generative ai','mcts','games','visualisation','visualization','nosql','quality','dataviz'],
       a: "Her year-2 courses <b>assessed through a project</b>: generative AI, NLP, deep learning, deep learning for images, reinforcement learning, graph mining, data visualisation, <b>AI in the cloud</b>, data streams and Monte Carlo search for games. Plus exam-based: ML fundamentals, NoSQL databases, Big Data, ML on Big Data, knowledge graphs, data quality and ethics.",
       src: [["Master's courses",'#cours']] },
     { id: 'acp', k: ['pca','mca','data analysis','principal','correspondence','clustering','classification'],
@@ -746,7 +783,7 @@ img { max-width: 100%; }
     { id: 'optim', k: ['optimisation','optimization','gradient','descent','neural','network','networks','bayesian','deep','mlp'],
       a: "In <b>optimisation</b>: gradient descent, neural networks and Bayesian networks. She also uses MLPs in practice (breast cancer, tourism forecasting).",
       src: [['Courses','#cours']] },
-    { id: 'ts', k: ['time series','series','temporal','lstm','forecast','forecasting','tourism'],
+    { id: 'ts', k: ['time series','series','temporal','lstm','forecast','forecasting'],
       a: "A <b>time series</b> course with LSTM and MLP, applied to forecasting tourism flows across 24 Tunisian governorates.",
       src: [['Courses','#cours']] },
     { id: 'graph', k: ['graph','graphs','dag','dags','dijkstra','shortest','path','paths'],
@@ -776,6 +813,27 @@ img { max-width: 100%; }
     { id: 'gh', k: ['github','code','repo','repos','repository','repositories','source'],
       a: "Her code is on <b>github.com/Ikram-Saidane</b>: Agora, churn-prediction-api, house-prices-kaggle, tunisia-tourism-forecasting and a Bayesian network project.",
       src: [['Projects','#projets']] },
+    { id: 'tourism', k: ['tourism forecasting','tourism flows','tourism forecast','tourism','tourist','flows','governorate','governorates','geopandas','map'],
+      a: "<b>Tourism flow forecasting</b> across 24 Tunisian governorates (2017–2025). She started from a Random Forest (R² 0.76), then PCA, a tuned MLP, and finally a <b>12-month LSTM</b>: <b>R² 0.961</b>. Forecasts are mapped with GeoPandas.",
+      src: [['Tourism forecasting','#p-tourism']] },
+    { id: 'resto', k: ['restaurant','restaurants','revenue','mining','data mining','smote','shap','lime'],
+      a: "A <b>data mining</b> project on 980 restaurants: regression (Ridge, R² 0.75), K-means (k = 8), binary classification with SMOTE (<b>AUC 0.948</b>) and SHAP / LIME explanations. She also predicted <b>hotel cancellations</b> (AUC 0.915).",
+      src: [['Restaurants','#p-resto'],['Hotels','#p-hotel']] },
+    { id: 'hotel', k: ['hotel','hotels','cancellation','cancellations','booking','bookings'],
+      a: "<b>Hotel cancellation</b> prediction: <b>AUC 0.915</b>, with SMOTE to rebalance the classes and SHAP / LIME to explain the predictions.",
+      src: [['Hotels','#p-hotel']] },
+    { id: 'ecom', k: ['ecommerce','e-commerce','commerce','survey','questionnaire','shoppers','factominer'],
+      a: "A pair <b>data analysis</b> project: a survey of 97 online shoppers in Tunisia. PCA (2 axes, ~70% of inertia), MCA and hierarchical clustering revealing <b>3 shopper profiles</b>. Done in R with FactoMineR.",
+      src: [['E-commerce','#p-ecom']] },
+    { id: 'seam', k: ['seam','carving','image','images','resizing','topological','bellman'],
+      a: "<b>Seam Carving</b>: shrinking an image without distorting its objects. The image becomes a <b>DAG</b> and the lowest-energy seam a shortest path, found by topological sort in O(H×W), faster than Dijkstra or Bellman-Ford.",
+      src: [['Seam Carving','#p-seam']] },
+    { id: 'crime', k: ['crime','criminal','investigation','suspect','suspects','culprit','clues'],
+      a: "A <b>criminal investigation</b> modelled with a <b>Bayesian network</b>: suspects, clues and testimonies are linked, then inference points to the most likely culprit.",
+      src: [['Bayesian investigation','#p-crime']] },
+    { id: 'basket', k: ['basket','basketball','game','games','match','nba','sport','winner','wins'],
+      a: "In the <b>Python for data science</b> course she built a model that predicts the <b>winner of a basketball game</b> from match data.",
+      src: [['Basketball','#p-basket']] },
     { id: 'thanks', k: ['thanks','thank','great','awesome','cool','perfect','nice','merci'],
       a: "My pleasure! To go further, the best is to write to Ikram: ikram.saidane@dauphine.eu 🍒",
       src: [['Contact','#contact']] }
